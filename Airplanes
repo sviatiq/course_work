@@ -1,0 +1,53 @@
+public abstract class Airplanes extends Vehicle {
+
+    private int takeOffLength;
+
+    public Airplanes(int takeOffLength, String name, Type type, double length, double width, int serialNum, String color) {
+        super(name, type, length, width, serialNum, color);
+        this.takeOffLength = takeOffLength;
+    }
+
+    public void setTakeOffLength(int takeOffLength) {
+        this.takeOffLength = takeOffLength;
+    }
+
+    public int getTakeOffLength() {
+        return takeOffLength;
+    }
+
+    @Override
+    public String getDescription() {
+        return "airplane with takeOffLength = " + takeOffLength;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.takeOffLength;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Airplanes other = (Airplanes) obj;
+        if (this.takeOffLength != other.takeOffLength) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Airplanes{" + "takeOffLength=" + takeOffLength + "|" + super.toString() + '}';
+    }
+
+}
