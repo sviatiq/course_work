@@ -1,0 +1,49 @@
+public class AirplanePassenger extends Airplanes {
+
+    private int numOfPass;
+
+    public AirplanePassenger(int numOfPass, int takeOffLength, String name, Type type, double length, double width, int serialNum, String color) {
+        super(takeOffLength, name, type, length, width, serialNum, color);
+        this.numOfPass = numOfPass;
+    }
+
+    public void setNumOfPass(int numOfPass) {
+        this.numOfPass = numOfPass;
+
+    }
+
+    public int getNameOfPass() {
+        return numOfPass;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.numOfPass;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AirplanePassenger other = (AirplanePassenger) obj;
+        if (this.numOfPass != other.numOfPass) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "AirplanePassenger{" + "numOfPass=" + numOfPass + "|" + super.toString() + '}';
+    }
+
+}
