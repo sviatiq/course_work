@@ -1,0 +1,53 @@
+public abstract class Helicopters extends Vehicle {
+
+    private int screw;
+
+    public Helicopters(int screw, String name, Type type, double length, double width, int serialNum, String color) {
+        super(name, type, length, width, serialNum, color);
+        this.screw = screw;
+    }
+
+    public void setScrew(int screw) {
+        this.screw = screw;
+    }
+
+    public int getTakeOffLength() {
+        return screw;
+    }
+
+    @Override
+    public String getDescription() {
+        return "helicopter with " + screw + " screws";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + this.screw;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Helicopters other = (Helicopters) obj;
+        if (this.screw != other.screw) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Helicopters{" + "screw=" + screw + "|" + super.toString() + '}';
+    }
+
+}
