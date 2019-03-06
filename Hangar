@@ -1,0 +1,77 @@
+package classes;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Hangar {
+
+    private List<Vehicle> list;
+    private String hangarName;
+
+    public Hangar(String hangarName) {
+        list = new ArrayList<>();
+        this.hangarName = hangarName;
+
+    }
+
+    public List<Vehicle> getList() {
+        return list;
+    }
+
+    public void setList(List<Vehicle> list) {
+        this.list = list;
+    }
+
+    public String getHangarName() {
+        return hangarName;
+    }
+
+    public void setHangarName(String hangarName) {
+        this.hangarName = hangarName;
+    }
+
+    public void addVehicle(Vehicle item) {
+        list.add(item);
+    }
+
+    public void removeVehicle(Vehicle item) {
+        list.remove(item);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.list);
+        hash = 29 * hash + Objects.hashCode(this.hangarName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hangar other = (Hangar) obj;
+        if (!Objects.equals(this.hangarName, other.hangarName)) {
+            return false;
+        }
+        if (!Objects.equals(this.list, other.list)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Hangar{" + "hangarName=" + hangarName + '}';
+    }
+    
+    
+}
