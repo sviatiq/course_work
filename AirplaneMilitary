@@ -1,0 +1,48 @@
+public class AirplaneMilitary extends Airplanes {
+
+    private String numOfWeapon;
+
+    public AirplaneMilitary(String numOfWeapon, int takeOffLength, String name, Type type, double length, double width, int serialNum, String color) {
+        super(takeOffLength, name, type, length, width, serialNum, color);
+        this.numOfWeapon = numOfWeapon;
+    }
+
+    public String getNumOfWeaponk() {
+        return numOfWeapon;
+    }
+
+    public void setNumOfWeapon(String gabarOtsek) {
+        this.numOfWeapon = gabarOtsek;
+    }
+
+    @Override
+    public String toString() {
+        return "HelicopMilitary{" + "numOfWeapon=" + numOfWeapon + "|" + super.toString() + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.numOfWeapon);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AirplaneMilitary other = (AirplaneMilitary) obj;
+        if (!Objects.equals(this.numOfWeapon, other.numOfWeapon)) {
+            return false;
+        }
+        return true;
+    }
+
+}
