@@ -1,0 +1,48 @@
+public class AirplaneCargo extends Airplanes {
+
+    private String compartmentSize;
+
+    public AirplaneCargo(String compartmentSize, int takeOffLength, String name, Type type, double length, double width, int serialNum, String color) {
+        super(takeOffLength, name, type, length, width, serialNum, color);
+        this.compartmentSize = compartmentSize;
+    }
+
+    public void setCompartmentSize(String compartmentSize) {
+        this.compartmentSize = compartmentSize;
+    }
+
+    public String getCompartmentSize() {
+        return compartmentSize;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.compartmentSize);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AirplaneCargo other = (AirplaneCargo) obj;
+        if (!Objects.equals(this.compartmentSize, other.compartmentSize)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "AirplaneCargo{" + "compartmentSize=" + compartmentSize + "|" + super.toString() + '}';
+    }
+
+}
