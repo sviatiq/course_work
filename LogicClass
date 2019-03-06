@@ -1,0 +1,110 @@
+mport java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import classes.AirplaneCargo;
+import classes.AirplaneMilitary;
+import classes.AirplanePassenger;
+import classes.Hangar;
+import classes.HelicopterCargo;
+import classes.HelicopterMilitary;
+import classes.HelicopterPassenger;
+import classes.Type;
+import classes.Vehicle;
+
+public class LogicClass {
+
+    private static LogicClass instance;
+
+    private List<Hangar> hangars = new ArrayList<>();
+
+    private LogicClass() {
+        loadHangars();
+    }
+
+    public static synchronized LogicClass getInstance() throws ParseException {
+        if (instance == null) {
+            instance = new LogicClass();
+        }
+        return instance;
+    }
+
+    public List<Hangar> getHangars() {
+        return hangars;
+    }
+
+    public void setHangars(List<Hangar> hangars) {
+        this.hangars = hangars;
+    }
+
+    private void loadHangars() {
+        Hangar hangar1 = new Hangar("First Hangar");
+        Vehicle boeing = new AirplanePassenger(1630, 160, "Boeing ", Type.Passenger, 39.5, 12.5, 737, "white and blue");
+        hangar1.addVehicle(boeing);
+        Vehicle an = new AirplaneCargo("50x20", 1500, "AN", Type.Cargo, 4.2, 3.3, 225, "white");
+        hangar1.addVehicle(an);
+        Vehicle helicopCargo = new HelicopterCargo("34x20", 2, "AN", Type.Cargo, 15.2, 8.6, 2, "white");
+        hangar1.addVehicle(helicopCargo);
+
+        Hangar hangar2 = new Hangar("Second Hangar");
+        Vehicle mi8 = new HelicopterPassenger(60, 2, "MI-8", Type.Passenger, 12.2, 1.2, 2, "black");
+        hangar2.addVehicle(mi8);
+        Vehicle ka62 = new HelicopterMilitary("20 rockets and 6 machine guns", 4, "KA", Type.Military, 12.7, 5.6, 62, "dark green");
+        hangar2.addVehicle(ka62);
+        Vehicle l39 = new AirplaneMilitary("20 rockets and 6 machine guns", 4, "L", Type.Military, 12.0, 5.6, 39, "yellow and blue");
+        hangar2.addVehicle(l39);
+
+        hangars.add(hangar1);
+        hangars.add(hangar2);
+
+    }
+
+    public List<Vehicle> getAllVehicles() {
+        List<Vehicle> list = new ArrayList<>();
+        for (Hangar h : hangars) {
+            for (Vehicle v : h.getList()) {
+                list.add(v);
+            }
+        }
+        return list;
+    }
+
+    public List<Vehicle> getAllVehicleFromHangar(Hangar hangar) {
+        List<Vehicle> veh = new ArrayList<>();
+        for (Vehicle v : hangar.getList()) {
+            veh.add(v);
+        }
+        return veh;
+    }
+
+    public void widthSort(List<Vehicle> list) {
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size() - 1 - i; j++) {
+
+                if (list.get(j).getWidth() > list.get(j + 1).getWidth()) {
+                    Vehicle t = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, t);
+
+                }
+            }
+        }
+    }
+
+    public void lengthSort(List<Vehicle> list) {
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size() - 1 - i; j++) {
+
+                if (list.get(j).getLength() > list.get(j + 1).getLength()) {
+                    Vehicle t = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, t);
+
+                }
+            }
+        }
+    }
+
+}
