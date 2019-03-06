@@ -1,0 +1,48 @@
+public class HelicopterCargo extends Helicopters {
+
+    private String compartmentSize;
+
+    public HelicopterCargo(String compartmentSize, int screw, String name, Type type, double length, double width, int serialNum, String color) {
+        super(screw, name, type, length, width, serialNum, color);
+        this.compartmentSize = compartmentSize;
+    }
+
+    public String compartmentSize() {
+        return compartmentSize;
+    }
+
+    public void getCompartmentSize(String compartmentSize) {
+        this.compartmentSize = compartmentSize;
+    }
+
+    @Override
+    public String toString() {
+        return "HelicopterCargo{" + "gabarOtsek=" + compartmentSize + "|" + super.toString() + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.compartmentSize);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HelicopterCargo other = (HelicopterCargo) obj;
+        if (!Objects.equals(this.compartmentSize, other.compartmentSize)) {
+            return false;
+        }
+        return true;
+    }
+
+}
