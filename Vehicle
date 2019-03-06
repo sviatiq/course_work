@@ -1,0 +1,128 @@
+public abstract class Vehicle {
+
+    private Hangar hangar;
+    private Type type;
+    private String name;
+    private double length;
+    private double width;
+    private int serialNum;
+    private String color;
+
+    public Vehicle(String name, Type type, double length, double width, int serialNum, String color) {
+        this.name = name;
+        this.type = type;
+        this.length = length;
+        this.width = width;
+        this.serialNum = serialNum;
+        this.color = color;
+    }
+
+    public abstract String getDescription();
+
+    public Hangar getHangar() {
+        return hangar;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setSerialNum(int serialNum) {
+        this.serialNum = serialNum;
+    }
+
+    public int getSerialNum() {
+        return serialNum;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.type);
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.length) ^ (Double.doubleToLongBits(this.length) >>> 32));
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.width) ^ (Double.doubleToLongBits(this.width) >>> 32));
+        hash = 83 * hash + this.serialNum;
+        hash = 83 * hash + Objects.hashCode(this.color);
+        hash = 83 * hash + Objects.hashCode(this.hangar);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vehicle other = (Vehicle) obj;
+        if (Double.doubleToLongBits(this.length) != Double.doubleToLongBits(other.length)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.width) != Double.doubleToLongBits(other.width)) {
+            return false;
+        }
+        if (this.serialNum != other.serialNum) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        if (this.type != other.type) {
+            return false;
+        }
+        if (!Objects.equals(this.hangar, other.hangar)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" + "type=" + type + ", name=" + name + ", length=" + length + ", width=" + width + ", serialNum=" + serialNum + ", color=" + color + '}';
+    }
+
+}
